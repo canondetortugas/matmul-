@@ -1,0 +1,15 @@
+#!/bin/sh -l
+
+#PBS -l walltime=0:30:00
+#PBS -N matmul-blocked
+#PBS -j oe
+
+module load cs5220
+cd $PBS_O_WORKDIR
+
+BSIZE=$(./get_bsize.py $PBS_ARRAYID)
+
+echo "Block size is $BSIZE"
+
+./matmul-blocked $BSIZE timing-blocked-bsize$BSIZE.csv
+

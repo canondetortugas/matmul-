@@ -20,6 +20,9 @@ all:	$(DRIVERS)
 matmul-%: $(OBJS) dgemm_%.o
 	$(LD) -o $@ $^ $(LDFLAGS) $(LIBS)
 
+matmul-blocked: matmul_bsize.o dgemm_blocked.o
+	$(LD) -o $@ $^ $(LDFLAGS) $(LIBS)
+
 matmul-f2c: $(OBJS) dgemm_f2c.o dgemm_f2c_desc.o fdgemm.o
 	$(LD) -o $@ $^ $(LDFLAGS) $(LIBS) 
 
@@ -36,6 +39,9 @@ matmul-veclib: $(OBJS) dgemm_veclib.o
 # Rules to build object files
 
 matmul.o: matmul.c
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $<
+
+matmul_bsize.o: matmul_bsize.c
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $<
 
 %.o: %.c
