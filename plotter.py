@@ -1,6 +1,5 @@
 #!/share/apps/python/anaconda/bin/python
 
-
 import sys
 import numpy as np
 import pandas as pd
