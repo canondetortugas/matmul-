@@ -1,0 +1,21 @@
+What you think they did well (and why)
++ They did a good job in loop order and plot 2.1 is very nice.
++ They did a good job of explaining why the best loop order worked best (i.e. accessing with stride = 1).
++ The report is well-organized and easy to follow.
++ Inclusion of reference code for the different optimizations that were attempted was helpful.
++ The group did an excellent job explaining the engineering that went into their matmul implementation.
+
+What you think they could improve on (and why)
++ Incorporate analysis of your experimental results - don’t leave it up to us to figure out what’s going on.
++ Memory alignment is not equivalent to contiguous memory. So you should align the memory using _mm_malloc.
++ They only tried two kinds of optimizations, which goes against the exploratory nature of part one.
++ Explain more clearly the purpose of the sub-matrix as opposed to the sub-sub-matrix; they explain what they did but not why.
+
+Anything else you would like to add
++ Aren’t we (technically) computing C = C + AB? That’s a little proofreading thing but I could see the wording being important.
++ Play with TeX a bit to see if you can insert the figures in a more streamlined manner - their placement made the report a bit hard to follow.
++ Try different flags of icc compiler.
++ Try to use SSE and AVX.
++ Try to combine loop order and blocked size together.
++ Since you are testing fixed block sizes, autotuning your blocking may be a good idea (for example so that you can let it run overnight and have a best block size answer in the morning)
++ The results for loop reordering are consistent with our own.
